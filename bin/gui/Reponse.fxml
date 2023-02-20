@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ReponseController">
+   <bottom>
+      <AnchorPane prefHeight="544.0" prefWidth="501.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField id="txtRechercher" fx:id="txtIdrep" layoutX="184.0" layoutY="124.0" />
+            <Button id="btnAjouter" fx:id="btnAjouterReponse" layoutX="367.0" layoutY="389.
+            
+            0" mnemonicParsing="false" onAction="#ajouterReponse" text="Repondre" />
+            <Label layoutX="73.0" layoutY="128.0" text="ID :" />
+            <Label layoutX="57.0" layoutY="222.0" prefHeight="17.0" prefWidth="85.0" text="Description :" />
+            <TextArea fx:id="txtDescriptionrep" layoutX="184.0" layoutY="213.0" prefHeight="148.0" prefWidth="200.0" />
+            <Label layoutX="176.0" layoutY="42.0" text="Ajout d'une Reponse" textFill="#ff6200">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Button fx:id="btnRepondre" layoutX="276.0" layoutY="506.0" mnemonicParsing="false" text="Tester la liste" />
+            <Button layoutX="154.0" layoutY="506.0" mnemonicParsing="false" text="Tester Supprimer" />
+            <Button layoutX="23.0" layoutY="506.0" mnemonicParsing="false" text="Tester Modification" />
+            <Label layoutX="154.0" layoutY="471.0" prefHeight="17.0" prefWidth="105.0" text="Bouton de testes">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+         </children></AnchorPane>
+   </bottom>
+</BorderPane>

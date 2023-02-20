@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReclamationController">
+   <bottom>
+      <AnchorPane fx:id="pnlReclamation" prefHeight="409.0" prefWidth="409.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="42.0" layoutY="59.0" text="ID :" />
+            <Label layoutX="35.0" layoutY="106.0" text="Sujet :" />
+            <Label layoutX="27.0" layoutY="160.0" text="Description :" />
+            <Label alignment="CENTER" layoutX="126.0" layoutY="14.0" prefHeight="21.0" prefWidth="130.0" text="Ajout Réclamation" textFill="#ff6a00">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtId" disable="true" editable="false" layoutX="101.0" layoutY="55.0" />
+            <TextField fx:id="txtSujet" layoutX="101.0" layoutY="102.0" />
+            <TextArea fx:id="txtDescription" layoutX="101.0" layoutY="152.0" prefHeight="96.0" prefWidth="165.0" />
+            <Button fx:id="btnAjouterReclamation" layoutX="242.0" layoutY="264.0" mnemonicParsing="false" onAction="#ajouterReclamation" text="Réclamer" textFill="#fc8a08" />
+            <Button fx:id="btnModification" layoutX="25.0" layoutY="363.0" mnemonicParsing="false" onAction="#modifierReclamation" text="Tester Modification" />
+            <Button fx:id="btnSupprimer" layoutX="161.0" layoutY="363.0" mnemonicParsing="false" onAction="#supprimerReclamation" text="Tester Supprimer" />
+            <Button fx:id="btnAfficher" layoutX="285.0" layoutY="363.0" mnemonicParsing="false" onAction="#afficherReclamations" text="Tester la liste" />
+         </children>
+      </AnchorPane>
+   </bottom>
+</BorderPane>
