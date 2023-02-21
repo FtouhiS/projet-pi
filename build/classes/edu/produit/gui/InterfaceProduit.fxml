@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="536.0" prefWidth="907.0" style="-fx-background-color: FFE756;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+   <children>
+      <AnchorPane prefHeight="536.0" prefWidth="234.0" style="-fx-background-color: FFFF5D;">
+         <children>
+            <VBox layoutY="221.0" prefHeight="326.0" prefWidth="236.0">
+               <children>
+                  <Button fx:id="BT_AjouterProduit" mnemonicParsing="false" prefHeight="59.0" prefWidth="236.0" style="-fx-background-color: FFFF5D; -fx-background-radius: 30 0 0 30;" text="Ajouter">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="44.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../ajouter-au-panier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="BT_ModifierProduit" mnemonicParsing="false" prefHeight="57.0" prefWidth="236.0" style="-fx-background-color: FFFF5D; -fx-background-radius: 30 0 0 30;" text="Modifier">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="51.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../modifier.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="59.0" prefWidth="236.0" style="-fx-background-color: FFFF5D; -fx-background-radius: 30 0 0 30;" text="Supprimer">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="29.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="54.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../../supprimer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="51.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../logo.PNG" />
+               </image>
+            </ImageView>
+            <Pane layoutY="173.0" prefHeight="48.0" prefWidth="257.0" style="-fx-background-color: PURPLE; -fx-background-radius: 15;">
+               <children>
+                  <Label layoutX="16.0" layoutY="4.0" text="Espace produit" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Bold" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="397.0" layoutY="-51.0" prefHeight="7.0" prefWidth="525.0" rotate="26.6" style="-fx-background-color: PURPLE; -fx-background-radius: 50;" />
+      <Pane layoutX="408.0" layoutY="-30.0" prefHeight="7.0" prefWidth="525.0" rotate="26.6" style="-fx-background-color: PURPLE; -fx-background-radius: 50;" />
+      <Pane layoutX="419.0" layoutY="-11.0" prefHeight="7.0" prefWidth="525.0" rotate="26.6" style="-fx-background-color: PURPLE; -fx-background-radius: 50;" />
+   </children>
+</AnchorPane>
