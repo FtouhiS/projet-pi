@@ -7,39 +7,65 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="812.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roubafika.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="812.0" prefWidth="1024.0" style="-fx-background-color: FFE765; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="roubafika.FXMLDocumentController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <TableView fx:id="ListA" layoutX="257.0" layoutY="163.0" prefHeight="460.0" prefWidth="754.0">
+      <TableView fx:id="ListA" layoutX="257.0" layoutY="163.0" prefHeight="460.0" prefWidth="725.0" style="-fx-border-width: 10; -fx-border-radius: 8; -fx-border-color: PURPLE; -fx-background-color: FFE765; -fx-text-fill: PURPLE;">
          <columns>
-            <TableColumn fx:id="TitreA" prefWidth="111.0" text="Titre" />
-            <TableColumn fx:id="DescriptionA" prefWidth="172.0" text="Description" />
-            <TableColumn fx:id="DateA" prefWidth="134.0" text="Date_annonce" />
-            <TableColumn fx:id="AdresseA" prefWidth="101.0" text="Adresse" />
-            <TableColumn fx:id="CategorieA1" prefWidth="123.0" text="Categorie" />
+            <TableColumn fx:id="TitreA" prefWidth="111.0" style="-fx-background-color: FFFF5D;" text="Titre" />
+            <TableColumn fx:id="DescriptionA" prefWidth="172.0" style="-fx-background-color: FFFF5D;" text="Description" />
+            <TableColumn fx:id="DateA" prefWidth="134.0" style="-fx-background-color: FFFF5D;" text="Date_annonce" />
+            <TableColumn fx:id="AdresseA" prefWidth="101.0" style="-fx-background-color: FFFF5D;" text="Adresse" />
+            <TableColumn fx:id="CategorieA1" prefWidth="98.0" style="-fx-background-color: FFFF5D;" text="Categorie" />
          </columns>
       </TableView>
-      <TextField fx:id="libelleDescription" layoutX="32.0" layoutY="263.0" prefHeight="25.0" prefWidth="141.0" />
-      <TextField fx:id="libelleTitre" layoutX="32.0" layoutY="182.0" prefHeight="25.0" prefWidth="141.0" />
-      <Label layoutX="37.0" layoutY="149.0" text="Titre" />
-      <Label layoutX="36.0" layoutY="231.0" text="Description" />
-      <Label layoutX="34.0" layoutY="327.0" text="Date_annonce" />
-      <DatePicker fx:id="libelleDate" layoutX="34.0" layoutY="361.0" />
-      <Label layoutX="34.0" layoutY="413.0" text="Adresse" />
-      <TextField fx:id="libelleAdresse" layoutX="32.0" layoutY="447.0" prefHeight="25.0" prefWidth="141.0" />
-      <Label layoutX="32.0" layoutY="505.0" text="Catégorie" />
-      <Button fx:id="ajoutA" layoutX="36.0" layoutY="605.0" mnemonicParsing="false" onAction="#inscrire" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" text="Ajouter" />
-      <Button fx:id="modA" layoutX="36.0" layoutY="668.0" mnemonicParsing="false" onAction="#modifier" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" text="Modifier" />
-      <Button fx:id="supA" layoutX="36.0" layoutY="735.0" mnemonicParsing="false" onAction="#supprimer" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" text="Supprimer" />
-      <Pane fx:id="pnlStatus" layoutX="308.0" layoutY="14.0" prefHeight="102.0" prefWidth="532.0" style="-fx-background-color: #222831;">
+      <TextField fx:id="libelleDescription" layoutX="32.0" layoutY="263.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: PURPLE; -fx-background-radius: 55; -fx-text-fill: white;" />
+      <TextField fx:id="libelleTitre" layoutX="32.0" layoutY="182.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: purple; -fx-text-fill: white; -fx-background-radius: 55;" />
+      <Label layoutX="37.0" layoutY="149.0" text="Titre">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Label>
+      <Label layoutX="36.0" layoutY="231.0" text="Description">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Label>
+      <Label layoutX="34.0" layoutY="327.0" text="Date_annonce">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Label>
+      <DatePicker fx:id="libelleDate" layoutX="34.0" layoutY="361.0" style="-fx-background-color: PURPLE;" />
+      <Label layoutX="34.0" layoutY="413.0" text="Adresse">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Label>
+      <TextField fx:id="libelleAdresse" layoutX="32.0" layoutY="447.0" prefHeight="25.0" prefWidth="141.0" style="-fx-background-color: PURPLE; -fx-background-radius: 55; -fx-text-fill: white;" />
+      <Label layoutX="32.0" layoutY="505.0" text="Catégorie">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Label>
+      <Button fx:id="ajoutA" layoutX="36.0" layoutY="605.0" mnemonicParsing="false" onAction="#inscrire" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: PURPLE; -fx-background-radius: 55;" text="Ajouter" textFill="#f5f4f4">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Button>
+      <Button fx:id="modA" layoutX="36.0" layoutY="668.0" mnemonicParsing="false" onAction="#modifier" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: PURPLE; -fx-background-radius: 55;" text="Modifier" textFill="#f2f0f0">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Button>
+      <Button fx:id="supA" layoutX="36.0" layoutY="735.0" mnemonicParsing="false" onAction="#supprimer" onMousePressed="#onsave" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: PURPLE; -fx-background-radius: 55;" text="Supprimer" textFill="#fcf5f5">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></Button>
+      <Pane fx:id="pnlStatus" layoutX="308.0" layoutY="14.0" prefHeight="102.0" prefWidth="532.0" style="-fx-background-color: FFE756;">
          <children>
-            <Label fx:id="lblstatus" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="20.0" layoutY="27.0" text="Services" textFill="WHITE">
+            <Label fx:id="lblstatus" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="212.0" layoutY="29.0" text="Services" textFill="#070707">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="Bernard MT Condensed" size="36.0" />
                </font>
             </Label>
          </children>
@@ -48,7 +74,38 @@
       <Label fx:id="erreurDescription" layoutX="34.0" layoutY="294.0" prefHeight="21.0" prefWidth="184.0" textFill="RED" />
       <Label fx:id="erreurDate" layoutX="34.0" layoutY="393.0" prefHeight="21.0" prefWidth="184.0" textFill="RED" />
       <Label fx:id="erreurAdresse" layoutX="32.0" layoutY="481.0" prefHeight="21.0" prefWidth="184.0" textFill="RED" />
-      <RadioButton fx:id="buttonTransport" layoutX="19.0" layoutY="537.0" mnemonicParsing="false" text="Transport" />
-      <RadioButton fx:id="buttonPlomberie" layoutX="138.0" layoutY="537.0" mnemonicParsing="false" text="plomberie" />
+      <RadioButton fx:id="buttonTransport" layoutX="19.0" layoutY="537.0" mnemonicParsing="false" text="Transport">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></RadioButton>
+      <RadioButton fx:id="buttonPlomberie" layoutX="138.0" layoutY="537.0" mnemonicParsing="false" text="plomberie">
+         <font>
+            <Font name="Bernard MT Condensed" size="18.0" />
+         </font></RadioButton>
+      <ImageView fitHeight="34.0" fitWidth="33.0" layoutX="144.0" layoutY="606.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/addition.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="45.0" fitWidth="39.0" layoutX="144.0" layoutY="733.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/trash-bin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="33.0" layoutX="147.0" layoutY="666.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/editing.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="114.0" fitWidth="134.0" layoutX="20.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Downloads/logo.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="128.0" fitWidth="141.0" layoutX="10.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo.PNG" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

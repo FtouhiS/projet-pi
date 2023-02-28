@@ -14,6 +14,13 @@ import java.util.Objects;
 public class Service {
     private int id;
     private String titre,description,date_annonce,adresse;
+
+    public Service(int id, String titre) {
+        this.id = id;
+        this.titre = titre;
+    }
+
+    
         public enum Categorie{
             transport,
             plomberie

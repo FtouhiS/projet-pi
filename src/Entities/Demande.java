@@ -19,7 +19,25 @@ import java.util.Objects;
 public class Demande {
     private int id_demande;
     private String nom_demandeur, prenom_demandeur, email_demandeur,date_demande;
-    private int id;
+    private int id_serv;
+    private String titreService;
+
+    public void setTitreService(String titreService) {
+        this.titreService = titreService;
+    }
+
+    public String getTitreService() {
+        return titreService;
+    }
+
+    public Demande(String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, String titreService) {
+        this.nom_demandeur = nom_demandeur;
+        this.prenom_demandeur = prenom_demandeur;
+        this.email_demandeur = email_demandeur;
+        this.date_demande = date_demande;
+        this.titreService = titreService;
+    }
+    
 
     public Demande(int id_demande, String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id) {
         this.id_demande = id_demande;
@@ -27,14 +45,14 @@ public class Demande {
         this.prenom_demandeur = prenom_demandeur;
         this.email_demandeur = email_demandeur;
         this.date_demande = date_demande;
-        this.id = id;
+        this.id_serv = id;
     }
 
-    public Demande(String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id) {
+    public Demande(String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id_serv) {
         this.nom_demandeur = nom_demandeur;
         this.prenom_demandeur = prenom_demandeur;
         this.email_demandeur = email_demandeur;
-        this.id = id;
+        this.id_serv = id_serv;
     }
 
     public Demande() {
@@ -60,8 +78,8 @@ public class Demande {
         return date_demande;
     }
 
-    public int getId_service() {
-        return id;
+    public int getId_serv() {
+        return id_serv;
     }
 
     public void setId(int id_demande) {
@@ -84,13 +102,13 @@ public class Demande {
         this.date_demande = date_demande;
     }
 
-    public void setId_service(int id) {
-        this.id = id;
+    public void setId_serv(int id_serv) {
+        this.id_serv = id_serv;
     }
 
     @Override
     public String toString() {
-        return "Demande{" + "id_demande=" + id_demande + ", nom_demandeur=" + nom_demandeur + ", prenom_demandeur=" + prenom_demandeur + ", email_demandeur=" + email_demandeur + ", date_demande=" + date_demande + ", id=" + id + '}';
+        return "Demande{" + "id_demande=" + id_demande + ", nom_demandeur=" + nom_demandeur + ", prenom_demandeur=" + prenom_demandeur + ", email_demandeur=" + email_demandeur + ", date_demande=" + date_demande + ", id_serv=" + id_serv + '}';
     }
 
     @Override
@@ -126,7 +144,7 @@ public boolean equals(Object obj) {
     if (!Objects.equals(this.date_demande, other.date_demande)) {
         return false;
     }
-    return this.id == other.id;
+    return this.id_serv == other.id_serv;
 }
 
 }

@@ -36,6 +36,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
@@ -47,7 +48,7 @@ import javafx.util.Callback;
  * @author moham
  */
 public class FXMLDocumentController implements Initializable {
-
+    private Categorie categorieSelectionnee;
     @FXML
     private Label label;
     @FXML
@@ -86,7 +87,6 @@ public class FXMLDocumentController implements Initializable {
     private Button modA;
     @FXML
     private Button supA;
-    @FXML
     private Label erreurTitre;
     @FXML
     private Label erreurDescription;
@@ -94,27 +94,23 @@ public class FXMLDocumentController implements Initializable {
     private Label erreurDate;
     @FXML
     private Label erreurAdresse;
-    @FXML
-    private Label erreurUpdate;
     
     @FXML
     private Pane pnlStatus;
    
 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    @FXML
+    private Label lblstatus;
+    @FXML
+    private Label erreurtitre;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showAll();
-        // Assuming you have a tableview called "tableView" already defined
-
-// Define a TableColumn for the button
-
-
-       
-    }    
+          showAll();
+    }
 
     @FXML
     private void inscrire(ActionEvent event) {
@@ -153,15 +149,28 @@ if (libelleAdresse.getText().isEmpty())
                         
                         return;
                     }
-Categorie categorieSelectionnee = null;
-    if (buttonTransport.isSelected()) {
+ToggleGroup categorieToggleGroup = new ToggleGroup();
+buttonTransport.setToggleGroup(categorieToggleGroup);
+buttonPlomberie.setToggleGroup(categorieToggleGroup); 
+
+categorieToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+    if (newValue == buttonTransport) {
+        // Handle selection of the Transport category
         categorieSelectionnee = Categorie.transport;
-    } else if (buttonPlomberie.isSelected()) {
+    } else if (newValue == buttonPlomberie) {
+        // Handle selection of the Plomberie category
         categorieSelectionnee = Categorie.plomberie;
     } else {
-        // Aucune catégorie sélectionnée
-        // Vous pouvez afficher un message d'erreur ou gérer ce cas selon vos besoins
+        // No category selected
+        categorieSelectionnee = null;
     }
+});
+//Categorie categorieSelectionnee = null;
+//    if (buttonTransport.isSelected()) {
+//        categorieSelectionnee = Categorie.transport;
+//    } else if (buttonPlomberie.isSelected()) {
+//        categorieSelectionnee = Categorie.plomberie;
+//    } 
 /*if (libelleCategorie.getText().isEmpty())
          {
                         
@@ -264,8 +273,11 @@ private void modifier(ActionEvent event) {
         }
         if (!updateColumnExists) {
             TableColumn<Service, Void> updateCol = new TableColumn<>("Update");
+            updateCol.setStyle("-fx-background-color: #FFFF5D;");
             updateCol.setCellFactory(param -> new TableCell<Service, Void>() {
                 private final Button updateButton = new Button("Update");
+                
+
                 private final Button deleteButton = new Button("Delete");
                 
                 {
