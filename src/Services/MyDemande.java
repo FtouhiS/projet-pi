@@ -38,7 +38,7 @@ public class MyDemande {
 
     private static String USER_NAME = "roubafikaservice";  // GMail user name (just the part before "@gmail.com")
     private static String PASSWORD = "pbmtdethvxelgsdl"; // GMail password
-    private static String RECIPIENT = "mohamedbahaeddine.brinsi@esprit.tn";
+    //private static String RECIPIENT = "mohamedbahaeddine.brinsi@esprit.tn";
 
     private PreparedStatement pst;
     private Statement ste;
@@ -73,20 +73,21 @@ public class MyDemande {
         return listeDemande;
 
     }
+
     public Service getServiceByID(int id) {
-        String requete = "SELECT * FROM service where id_service="+id;
+        String requete = "SELECT * FROM service where id_service=" + id;
         Statement st;
         ResultSet rs;
-        Service s =new Service();
+        Service s = new Service();
         try {
 
             ste = connection.createStatement();
             rs = ste.executeQuery(requete);
             while (rs.next()) {
-                
+
                 String categorieStr = rs.getString("categorie");
                 Categorie categorie = Categorie.valueOf(categorieStr);
-                 s =new Service(rs.getString("titre"), rs.getString("description"), rs.getString("date_annonce"), rs.getString("adresse"), categorie);
+                s = new Service(rs.getString("titre"), rs.getString("description"), rs.getString("date_annonce"), rs.getString("adresse"), categorie, rs.getInt("idUser"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(MyDemande.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,7 +97,7 @@ public class MyDemande {
     }
 
     public void ajouterDemande(Demande d) throws SQLException {
-        String requete = "INSERT INTO demande (nom_demandeur, prenom_demandeur, email_demandeur, date_demande, id_serv) VALUES (?,?,?,?,?)";
+        String requete = "INSERT INTO demande (nom_demandeur, prenom_demandeur, email_demandeur, date_demande, id_serv,idUser) VALUES (?,?,?,?,?,?)";
         try {
             connection = DataSource.getInstance().getConnection();
             pst = connection.prepareStatement(requete);
@@ -105,6 +106,7 @@ public class MyDemande {
             pst.setString(3, d.getEmail_demandeur());
             pst.setString(4, d.getDate_demande());
             pst.setInt(5, d.getId_serv());
+            pst.setInt(6, d.getIdUser());
             pst.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(MyDemande.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,9 +145,9 @@ public class MyDemande {
     public void sendEmailNotif(String recipient, Service s) {
         String from = USER_NAME;
         String pass = PASSWORD;
-        String[] to = {RECIPIENT}; // list of recipient email addresses
+        String[] to = {recipient}; // list of recipient email addresses
         String subject = "Votre demande a ete bien effectuée";
-        String body = "Vous avez demandé le service  <b>"+s.getTitre()+ "</b> <br/>"+s.getDescription();
+        String body = "Vous avez demandé le service  <b>" + s.getTitre() + "</b> <br/>" + s.getDescription();
         sendFromGMail(from, pass, to, subject, body);
     }
 
@@ -186,6 +188,26 @@ public class MyDemande {
         } catch (MessagingException me) {
             me.printStackTrace();
         }
+    }
+
+    public ObservableList<Demande> DemandeByUser(int idUser) {
+        ObservableList<Demande> list = FXCollections.observableArrayList();
+        String requete = "select * from demande where idUser= " + idUser;
+        Statement st;
+        ResultSet rs;
+
+        try {
+            ste = connection.createStatement();
+            rs = ste.executeQuery(requete);
+            while (rs.next()) {
+                list.add(new Demande(rs.getString("nom_demandeur"), rs.getString("prenom_demandeur"), rs.getString("email_demandeur"), rs.getString("date_demande"), rs.getInt("id_serv")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MyService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("azsazsaz"+list);
+        return list;
     }
 
 }

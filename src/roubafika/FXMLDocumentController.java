@@ -41,13 +41,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
-
 /**
  * FXML Controller class
  *
  * @author moham
  */
 public class FXMLDocumentController implements Initializable {
+
     private Categorie categorieSelectionnee;
     @FXML
     private Label label;
@@ -79,8 +79,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private RadioButton buttonPlomberie;
     
-    
-
     @FXML
     private Button ajoutA;
     @FXML
@@ -97,8 +95,8 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private Pane pnlStatus;
-   
-DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     @FXML
     private Label lblstatus;
     @FXML
@@ -109,69 +107,66 @@ DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          showAll();
+        showAll();
     }
-
+    
     @FXML
     private void inscrire(ActionEvent event) {
         MyService serv = new MyService();
         
-    if (libelleTitre.getText().isEmpty())
-         {
-                        erreurTitre.setText("Titre non valide !");
-                        erreurTitre.setVisible(true);
-                        
-                        return;
-                    }
-    if (libelleDescription.getText().isEmpty())
-         {
-                        erreurDescription.setText("Description non valide !");
-                        erreurDescription.setVisible(true);
-                        
-                        return;
-                    }
-    LocalDate selectedDate = libelleDate.getValue();
+        if (libelleTitre.getText().isEmpty()) {
+            erreurTitre.setText("Titre non valide !");
+            erreurTitre.setVisible(true);
+            
+            return;
+        }
+        if (libelleDescription.getText().isEmpty()) {
+            erreurDescription.setText("Description non valide !");
+            erreurDescription.setVisible(true);
+            
+            return;
+        }
+        LocalDate selectedDate = libelleDate.getValue();
 
 // Check if a date has been selected
-if (selectedDate == null) {
-    erreurDate.setText("Date non valide !");
-    erreurDate.setVisible(true);
-    return;
-}
+        if (selectedDate == null) {
+            erreurDate.setText("Date non valide !");
+            erreurDate.setVisible(true);
+            return;
+        }
 
 // Convert the selected date to a string if needed
-String dateString = selectedDate.toString();
+        String dateString = selectedDate.toString();
+        
+        if (libelleAdresse.getText().isEmpty()) {
+            erreurAdresse.setText("Adresse non valide !");
+            erreurAdresse.setVisible(true);
+            
+            return;
+        }
+        ToggleGroup categorieToggleGroup = new ToggleGroup();
+        buttonTransport.setToggleGroup(categorieToggleGroup);
+        buttonPlomberie.setToggleGroup(categorieToggleGroup);
 
-if (libelleAdresse.getText().isEmpty())
-         {
-                        erreurAdresse.setText("Adresse non valide !");
-                        erreurAdresse.setVisible(true);
-                        
-                        return;
-                    }
-ToggleGroup categorieToggleGroup = new ToggleGroup();
-buttonTransport.setToggleGroup(categorieToggleGroup);
-buttonPlomberie.setToggleGroup(categorieToggleGroup); 
-
-categorieToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-    if (newValue == buttonTransport) {
-        // Handle selection of the Transport category
-        categorieSelectionnee = Categorie.transport;
-    } else if (newValue == buttonPlomberie) {
-        // Handle selection of the Plomberie category
-        categorieSelectionnee = Categorie.plomberie;
-    } else {
-        // No category selected
-        categorieSelectionnee = null;
-    }
-});
-//Categorie categorieSelectionnee = null;
-//    if (buttonTransport.isSelected()) {
+//categorieToggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+//    if (newValue == buttonTransport) {
+//        // Handle selection of the Transport category
 //        categorieSelectionnee = Categorie.transport;
-//    } else if (buttonPlomberie.isSelected()) {
+//    } else if (newValue == buttonPlomberie) {
+//        // Handle selection of the Plomberie category
 //        categorieSelectionnee = Categorie.plomberie;
-//    } 
-/*if (libelleCategorie.getText().isEmpty())
+//    } else {
+//        // No category selected
+//        categorieSelectionnee = null;
+//    }
+//});
+        Categorie categorieSelectionnee = null;
+        if (buttonTransport.isSelected()) {
+            categorieSelectionnee = Categorie.transport;
+        } else if (buttonPlomberie.isSelected()) {
+            categorieSelectionnee = Categorie.plomberie;
+        }
+        /*if (libelleCategorie.getText().isEmpty())
          {
                         
                         
@@ -187,73 +182,59 @@ categorieToggleGroup.selectedToggleProperty().addListener((observable, oldValue,
 } else {
     // Category selected, do something else
 }*/
+        Service service = new Service();
+        
+        service.setTitre(libelleTitre.getText());
+        
+        service.setDescription(libelleDescription.getText());
+        System.out.println(libelleDate.getValue().toString());
+        String formattedDate = libelleDate.getValue().format(formatter);
+        service.setDate_annonce(formattedDate);
+        
+        service.setAdresse(libelleAdresse.getText());
+        service.setCategorie(categorieSelectionnee);
+        service.setIdUser(1);
 
-   
-    Service service =new Service();
-    
-    
-    service.setTitre(libelleTitre.getText());
-    
-    service.setDescription(libelleDescription.getText());
-    System.out.println(libelleDate.getValue().toString());
-    String formattedDate = libelleDate.getValue().format(formatter);
-    service.setDate_annonce(formattedDate);
-    
-    service.setAdresse(libelleAdresse.getText());
-    service.setCategorie(categorieSelectionnee);
-
-    //service.setCategorie(Categorie.plomberie);
-    serv.ajouterService(service);
-    
-    showAll();
-    
-    
-    
+        //service.setCategorie(Categorie.plomberie);
+        serv.ajouterService(service);
+        
+        showAll();
+        
     }
-
+    
     @FXML
     private void onsave(MouseEvent event) {
     }
-
+    
     @FXML
-private void modifier(ActionEvent event) {
-   
+    private void modifier(ActionEvent event) {
         
         Categorie categorieSelectionnee = null;
-            if (buttonTransport.isSelected()) {
-                categorieSelectionnee = Categorie.transport;
-            } else if (buttonPlomberie.isSelected()) {
-                categorieSelectionnee = Categorie.plomberie;
-            }
+        if (buttonTransport.isSelected()) {
+            categorieSelectionnee = Categorie.transport;
+        } else if (buttonPlomberie.isSelected()) {
+            categorieSelectionnee = Categorie.plomberie;
+        }
         
-            Service f=new Service(libelleTitre.getText(),libelleDescription.getText(), libelleDate.getValue().toString(),libelleAdresse.getText() ,categorieSelectionnee);
-            System.out.println(f);
-            MyService serv = new MyService();
-            serv.updateService(f,ListA.getSelectionModel().getSelectedItem().getTitre());
-            
-            showAll();
-            
-             
-            
+        Service f = new Service(libelleTitre.getText(), libelleDescription.getText(), libelleDate.getValue().toString(), libelleAdresse.getText(), categorieSelectionnee, 1);
+        System.out.println(f);
+        MyService serv = new MyService();
+        serv.updateService(f, ListA.getSelectionModel().getSelectedItem().getTitre());
         
+        showAll();
+        
+    }
     
-    
-    
-}
-
-
-
     @FXML
     private void supprimer(ActionEvent event) {
-    MyService s= new MyService();
-    System.out.println(ListA.getSelectionModel().getSelectedItem().getTitre());
-    s.deleteService(ListA.getSelectionModel().getSelectedItem().getTitre());
-    showAll();
+        MyService s = new MyService();
+        System.out.println(ListA.getSelectionModel().getSelectedItem().getTitre());
+        s.deleteService(ListA.getSelectionModel().getSelectedItem().getTitre());
+        showAll();
     }
-
-   
-    public void showAll(){
-         MyService serv = new MyService();
+    
+    public void showAll() {
+        MyService serv = new MyService();
         ObservableList<Service> s = serv.affichage();
         
         TitreA.setCellValueFactory(new PropertyValueFactory<Service, String>("Titre"));
@@ -261,14 +242,14 @@ private void modifier(ActionEvent event) {
         DateA.setCellValueFactory(new PropertyValueFactory<Service, String>("Date_annonce"));
         AdresseA.setCellValueFactory(new PropertyValueFactory<Service, String>("Adresse"));
         CategorieA1.setCellValueFactory(new PropertyValueFactory<Service, Categorie>("Categorie"));
-          
+        
         ListA.setItems(s);
-      
+        
         boolean updateColumnExists = false;
         for (TableColumn<?, ?> column : ListA.getColumns()) {
             if (column.getText().equals("Update")) {
-            updateColumnExists = true;
-            break;
+                updateColumnExists = true;
+                break;
             }
         }
         if (!updateColumnExists) {
@@ -277,25 +258,24 @@ private void modifier(ActionEvent event) {
             updateCol.setCellFactory(param -> new TableCell<Service, Void>() {
                 private final Button updateButton = new Button("Update");
                 
-
                 private final Button deleteButton = new Button("Delete");
                 
                 {
                     updateButton.setOnAction(event -> {
-                    Service data = getTableView().getItems().get(getIndex());
-                    System.out.println("Update button clicked for row: " + data);
-                    libelleTitre.setText(data.getTitre());
-                    libelleDescription.setText(data.getDescription());
-                    libelleDate.setValue(LocalDate.parse(data.getDate_annonce(), formatter));
-                    libelleAdresse.setText(data.getAdresse());
-                    Categorie c = data.getCategorie();
-                    
-                     if (c==Categorie.transport) {
-                    buttonTransport.setSelected(true);
-                    } else if (c==Categorie.plomberie) {
-                    buttonPlomberie.setSelected(true);
-                    }
-                    
+                        Service data = getTableView().getItems().get(getIndex());
+                        System.out.println("Update button clicked for row: " + data);
+                        libelleTitre.setText(data.getTitre());
+                        libelleDescription.setText(data.getDescription());
+                        libelleDate.setValue(LocalDate.parse(data.getDate_annonce(), formatter));
+                        libelleAdresse.setText(data.getAdresse());
+                        Categorie c = data.getCategorie();
+                        
+                        if (c == Categorie.transport) {
+                            buttonTransport.setSelected(true);
+                        } else if (c == Categorie.plomberie) {
+                            buttonPlomberie.setSelected(true);
+                        }
+                        
                     });
                 }
                 
@@ -314,4 +294,3 @@ private void modifier(ActionEvent event) {
         }
     }
 }
-    

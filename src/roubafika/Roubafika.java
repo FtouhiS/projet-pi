@@ -9,9 +9,11 @@ import Entities.Demande;
 import Services.MyDemande;
 import java.util.Properties;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -19,14 +21,18 @@ import javafx.stage.Stage;
  * @author moham
  */
 public class Roubafika extends Application {
+    
+     
 
     @Override
     public void start(Stage stage) throws Exception {
+        
 
-        Parent root = FXMLLoader.load(getClass().getResource("statistiqueFXML.fxml"));
-
+        Parent root = FXMLLoader.load(getClass().getResource("roubafikaHome.fxml"));
+        
         Scene scene = new Scene(root);
-
+        scene.getStylesheets().add(getClass().getResource("card.css").toExternalForm());
+        
         stage.setScene(scene);
         stage.show();
     }

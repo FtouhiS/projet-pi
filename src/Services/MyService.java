@@ -33,7 +33,6 @@ public class MyService {
         connection = DataSource.getInstance().getConnection();
     }
 
-    
     public ObservableList<Service> affichage() {
         ObservableList<Service> list = FXCollections.observableArrayList();
         String requete = "select * from service";
@@ -46,7 +45,7 @@ public class MyService {
             while (rs.next()) {
                 String categorieStr = rs.getString("categorie");
                 Categorie categorie = Categorie.valueOf(categorieStr);
-                list.add(new Service(rs.getString("titre"), rs.getString("description"), rs.getString("date_annonce"), rs.getString("adresse"), categorie));
+                list.add(new Service(rs.getInt("id_service"),rs.getString("titre"), rs.getString("description"), rs.getString("date_annonce"), rs.getString("adresse"), categorie, rs.getInt("idUser")));
             }
 
         } catch (SQLException ex) {
@@ -55,7 +54,30 @@ public class MyService {
 
         return list;
     }
-     public ObservableList<Service> listeTitreService() {
+    
+    public ObservableList<Service> ServiceByUser(int iduser) {
+        ObservableList<Service> list = FXCollections.observableArrayList();
+        String requete = "select * from service where idUser= "+iduser;
+        Statement st;
+        ResultSet rs;
+
+        try {
+            ste = connection.createStatement();
+            rs = ste.executeQuery(requete);
+            while (rs.next()) {
+                String categorieStr = rs.getString("categorie");
+                Categorie categorie = Categorie.valueOf(categorieStr);
+                list.add(new Service(rs.getInt("id_service"),rs.getString("titre"), rs.getString("description"), rs.getString("date_annonce"), rs.getString("adresse"), categorie, rs.getInt("idUser")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MyService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+    }
+
+    public ObservableList<Service> listeTitreService() {
         ObservableList<Service> list = FXCollections.observableArrayList();
         String requete = "select id_service , titre from service";
         Statement st;
@@ -64,8 +86,8 @@ public class MyService {
         try {
             ste = connection.createStatement();
             rs = ste.executeQuery(requete);
-            while (rs.next()) { 
-                list.add(new Service(rs.getInt("id_service"),rs.getString("titre")));
+            while (rs.next()) {
+                list.add(new Service(rs.getInt("id_service"), rs.getString("titre")));
             }
 
         } catch (SQLException ex) {
@@ -76,7 +98,7 @@ public class MyService {
     }
 
     public int ajouterService(Service s) {
-        String requeteInsert = "INSERT INTO service ( titre , description , date_annonce, adresse, categorie) VALUES (?,?,?,?,?)";
+        String requeteInsert = "INSERT INTO service ( titre , description , date_annonce, adresse, categorie,idUser) VALUES (?,?,?,?,?,?)";
         try {
             System.out.println("service , " + s);
             pst = connection.prepareStatement(requeteInsert, Statement.RETURN_GENERATED_KEYS);
@@ -85,6 +107,7 @@ public class MyService {
             pst.setString(3, s.getDate_annonce());
             pst.setString(4, s.getAdresse());
             pst.setString(5, s.getCategorie().toString());
+            pst.setInt(6, s.getIdUser());
             pst.executeUpdate();
 
             ResultSet rs = pst.getGeneratedKeys();
@@ -128,26 +151,21 @@ public class MyService {
         }
     }
 
-    
-     public int Stats(String par) {
-   String sql = "selEct coUnt(*) from demande where id_serv"+ "=" +"'"+par+"'";
-   
-  
-      try {
-            
-    
-           ste = connection.createStatement();
-           rs= ste.executeQuery(sql);
+    public int Stats(String par) {
+        String sql = "selEct coUnt(*) from demande where id_serv" + "=" + "'" + par + "'";
+        try {
+            ste = connection.createStatement();
+            rs = ste.executeQuery(sql);
 
             int num = 0;
-            while(rs.next()){
+            while (rs.next()) {
                 num = (rs.getInt(1));
                 return num;
- 
+
             }
         } catch (SQLException ex) {
-            
+
         }
-        return 0 ;
-    }  
+        return 0;
+    }
 }

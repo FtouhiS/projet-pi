@@ -19,7 +19,16 @@ import java.util.Objects;
 public class Demande {
     private int id_demande;
     private String nom_demandeur, prenom_demandeur, email_demandeur,date_demande;
-    private int id_serv;
+    private int id_serv, idUser;
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+    
     private String titreService;
 
     public void setTitreService(String titreService) {
@@ -39,20 +48,29 @@ public class Demande {
     }
     
 
-    public Demande(int id_demande, String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id) {
+    public Demande(int id_demande, String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id,int idUser) {
         this.id_demande = id_demande;
         this.nom_demandeur = nom_demandeur;
         this.prenom_demandeur = prenom_demandeur;
         this.email_demandeur = email_demandeur;
         this.date_demande = date_demande;
         this.id_serv = id;
+        this.idUser = idUser;
     }
 
+    public Demande(String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id_serv,int idUser) {
+        this.nom_demandeur = nom_demandeur;
+        this.prenom_demandeur = prenom_demandeur;
+        this.email_demandeur = email_demandeur;
+        this.id_serv = id_serv;
+         this.idUser = idUser;
+    }
     public Demande(String nom_demandeur, String prenom_demandeur, String email_demandeur, String date_demande, int id_serv) {
         this.nom_demandeur = nom_demandeur;
         this.prenom_demandeur = prenom_demandeur;
         this.email_demandeur = email_demandeur;
         this.id_serv = id_serv;
+         
     }
 
     public Demande() {

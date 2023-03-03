@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="676.0" prefWidth="809.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="roubafika.BackController">
+   <children>
+      <TabPane layoutX="122.0" layoutY="64.0" prefHeight="567.0" prefWidth="660.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Service">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="520.0" prefWidth="724.0" />
+            </content>
+          </Tab>
+          <Tab text="Demande">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

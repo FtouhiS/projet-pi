@@ -12,8 +12,16 @@ import java.util.Objects;
  * @author moham
  */
 public class Service {
-    private int id;
+    private int id ,idUser;
     private String titre,description,date_annonce,adresse;
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
 
     public Service(int id, String titre) {
         this.id = id;
@@ -27,21 +35,23 @@ public class Service {
         }
         private Categorie categorie;
 
-    public Service(int id, String titre, String description, String date_annonce, String adresse, Categorie categorie) {
+    public Service(int id, String titre, String description, String date_annonce, String adresse, Categorie categorie,int idUser) {
         this.id = id;
         this.titre = titre;
         this.description = description;
         this.date_annonce = date_annonce;
         this.adresse = adresse;
         this.categorie = categorie;
+        this.idUser = idUser;
     }
 
-    public Service(String titre, String description, String date_annonce, String adresse, Categorie categorie) {
+    public Service(String titre, String description, String date_annonce, String adresse, Categorie categorie,int idUser) {
         this.titre = titre;
         this.description = description;
         this.date_annonce = date_annonce;
         this.adresse = adresse;
         this.categorie = categorie;
+          this.idUser = idUser;
     }
 
     public Service() {
