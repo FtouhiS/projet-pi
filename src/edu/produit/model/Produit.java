@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.produit.entites;
+package edu.produit.model;
 
 import java.util.Objects;
 
@@ -13,6 +13,9 @@ import java.util.Objects;
  */
 public class Produit {
     int id_produit;
+    String nom_produit;
+    String etat;
+    String description;
 
     public Produit(int id_produit, String nom_produit, String etat , String description) {
         this.id_produit = id_produit;
@@ -20,9 +23,11 @@ public class Produit {
         this.etat = etat;
         this.description = description;
     }
-    String nom_produit;
-    String etat;
-    String description;
+
+    public Produit() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     @Override
     public String toString() {

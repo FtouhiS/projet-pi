@@ -5,7 +5,7 @@
  */
 package edu.produit.services;
 
-import edu.produit.entites.Produit;
+import edu.produit.model.Produit;
 import java.util.List;
 
 /**

@@ -6,7 +6,7 @@
 package edu.produit.entites;
 import java.util.Objects;
 
-import org.apache.commons.validator.routines.EmailValidator;
+//import org.apache.commons.validator.routines.EmailValidator;
 /**
  *
  * @author abder

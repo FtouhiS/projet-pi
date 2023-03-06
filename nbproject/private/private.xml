@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/Desktop/Gestionproduit/src/edu/produit/services/InterfaceServices.java</file>
-            <file>file:/C:/Users/USER/Desktop/Gestionproduit/src/edu/produit/services/CRUDProduit.java</file>
-            <file>file:/C:/Users/USER/Desktop/Gestionproduit/src/edu/produit/utils/MyConnection.java</file>
-            <file>file:/C:/Users/USER/Desktop/Gestionproduit/src/edu/produit/tests/Gestionproduit.java</file>
-            <file>file:/C:/Users/USER/Desktop/Gestionproduit/src/edu/produit/entites/Produit.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/AjouterController.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/tests/Gestionproduit.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/firstWindow.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/model/Produit.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/FXMLController.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/InterfaceProduit.fxml</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/Ajouter.fxml</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/services/InterfaceListDemande.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/ListDemande.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/services/Metier.java</file>
+            <file>file:/C:/Users/achra/Downloads/Gestionproduit/Gestionproduit/src/edu/produit/entites/InterfaceProduitController.java</file>
         </group>
     </open-files>
 </project-private>

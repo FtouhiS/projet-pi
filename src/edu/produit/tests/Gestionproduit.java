@@ -5,7 +5,7 @@
  */
 package edu.produit.tests;
 
-import edu.produit.entites.Produit;
+import edu.produit.model.Produit;
 import edu.produit.services.CRUDProduit;
 import edu.produit.utils.MyConnection;
 import edu.produit.entites.ListDemande;
